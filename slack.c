@@ -47,6 +47,12 @@ void pushStack(struct stack *my_stack, int value){
     my_stack->head_ptr++; 
 }
 
+void popStack(struct stack *my_stack){
+    *(my_stack->head_ptr-1) = 0 ; // reset to zero for later use. 
+    my_stack->head_ptr--;
+    my_stack->size--;
+}
+
 void peekStack(struct stack *my_stack){
     printf("peenStack()\n");
     printf("%d\n",*(my_stack->head_ptr-1)) ; 
@@ -69,8 +75,13 @@ int main(){
     pushStack(&s,4);
     pushStack(&s,5);
 
+    popStack(&s) ; 
+    popStack(&s) ; 
+    popStack(&s) ; 
+    popStack(&s) ; 
+
     peekStack(&s);
     printStack(&s);
-    printf("%d \n",s.max_size);
+    //printf("%d \n",s.max_size);
 
 }
