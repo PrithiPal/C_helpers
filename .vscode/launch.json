@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // for MacOS
+                  "name": "(lldb) Launch cunit",
+                  "type": "cppdbg",
+                  "request": "launch",
+                  "program": "${workspaceRoot}/bubble_sort_cunit",
+                  "args": [],
+                  "stopAtEntry": false,
+                  "cwd": "${workspaceRoot}",
+                  "environment": [],
+                  "externalConsole": true,
+                  "preLaunchTask": "build cunit",
+                  "MIMode": "lldb"
+          },
+          {
+            // MacOS
+            "name": "Launch Program(lldb)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/slack.o",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "lldb"
+          },
+
+        
+
+    ]
+}
