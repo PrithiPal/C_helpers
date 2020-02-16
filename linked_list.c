@@ -48,7 +48,8 @@ void createLinkedListFromArray(int *arr, struct node *startNode, int size){
 void printLinkedList(struct node *startNode, int size){
     
     struct node *ptr = startNode ;   
-    for(int i = 0 ; i < size ; i ++ ){
+    
+    while(ptr!=NULL){
         printf("%d -> ",ptr->value);
         ptr = ptr->next_ptr ; 
     }
@@ -72,7 +73,8 @@ void insertNode(struct node *firstNode, int value){
 }
 
 void createGreaterLinkedList(struct node *ll, struct node *ll1, struct node *ll2){
-    int firstElem, secondElem ; 
+    int firstElem = ll1->value ; 
+    int secondElem  = ll2->value ;  
     struct node *prev; 
     int i = 0 ; 
     
@@ -83,7 +85,7 @@ void createGreaterLinkedList(struct node *ll, struct node *ll1, struct node *ll2
     else{
         ll->value = secondElem ; 
     }
-    prev=ll; 
+    prev = ll ; 
     ll1 = ll1->next_ptr ; 
     ll2 = ll2->next_ptr ;
 
@@ -92,7 +94,7 @@ void createGreaterLinkedList(struct node *ll, struct node *ll1, struct node *ll2
         
         // create a new node.
         
-        struct node *new_node = (struct node *)malloc(sizeof(struct node *)) ; 
+        struct node *new_node = (struct node *)malloc(sizeof(struct node )) ; 
         prev->next_ptr=new_node;
         
 
@@ -100,32 +102,43 @@ void createGreaterLinkedList(struct node *ll, struct node *ll1, struct node *ll2
         secondElem = ll2->value ; 
         
         if(firstElem > secondElem){
-            ll->value = firstElem;
+            new_node->value = firstElem;
         }
         else{
-            ll->value = secondElem ; 
+            new_node->value = secondElem ; 
         }
 
-        prev = ll ;
+        prev = new_node ; 
         ll1 = ll1->next_ptr ; 
         ll2 = ll2->next_ptr ;  
         i++; 
     }
-    ll->next_ptr = NULL ; 
+    
+    prev->next_ptr=NULL; 
 
 }
 
 int main(){
-    
+
+    // linked list #1
     struct node firstNode ; 
     int arr[10] = {1,2,3,4,5,6,7,8,9,10};
     
     createLinkedListFromArray(arr,&firstNode,10);
     printLinkedList(&firstNode,10);
     
-    insertNode(&firstNode,11);
-    printLinkedList(&firstNode,11);
+    //insertNode(&firstNode,11);
+    //printLinkedList(&firstNode,11);
     
-    
+    // linkedlist #2
+    struct node anotherNode;  
+    int arr2[10] = {10,20,30,40,50,60,70,80,90,100} ; 
+    createLinkedListFromArray(arr2,&anotherNode,10);
+    printLinkedList(&anotherNode,10);
+
+    // additive linkedlist #3
+    struct node combinedNode; 
+    createGreaterLinkedList(&combinedNode,&firstNode,&anotherNode);
+    printLinkedList(&combinedNode,10);
     return 0 ; 
 }
